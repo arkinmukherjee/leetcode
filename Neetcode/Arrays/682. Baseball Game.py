@@ -23,11 +23,23 @@ class Solution:
                 case _:
                     scores.append(int(s))
 
-        sum = 0
-        for i in range(0, len(scores)):
-            sum = sum + int(scores.pop())
+        return sum(scores)
 
-        return sum
+    def calPointsWithList(self, operations) -> int:
+        scores = []
+
+        for s in operations:
+            match s:
+                case '+':
+                    scores.append(scores[-1] + scores[-2])
+                case 'D':
+                    scores.append(scores[-1] * 2)
+                case 'C':
+                    scores.pop()
+                case _:
+                    scores.append(int(s))
+
+        return sum(scores)
 
 
 def main():
